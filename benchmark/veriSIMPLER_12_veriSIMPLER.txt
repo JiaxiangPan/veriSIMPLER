@@ -1,0 +1,19 @@
+Benchmark: veriSIMPLER_12
+Row size: 12
+Number of Gates: 7
+Inputs: gin1(M0),pin1(M1),gin0(M2),pin0(M3)
+Outputs: gout1(M7),pout1(M5),gout0(M0),pout0(M0)
+Number of PIs: 4
+Number of POs: 4
+Total cycles: 7
+Reuse cycles: 0
+Reuse cycles percentage: 0.00%
+Execution sequence:
+T0: INIT M4,M5,M6,M7,M8,M9,M10,M11
+T1: M11 = inv1 {M0}
+T2: M10 = inv1 {M3}
+T3: M9 = nor2 {M10,M11}
+T4: M8 = nor2 {M9,M2}
+T5: M7 = inv1 {M8}
+T6: M6 = inv1 {M1}
+T7: M5 = nor2 {M10,M6}

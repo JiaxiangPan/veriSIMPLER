@@ -1,0 +1,37 @@
+Benchmark: c17_10
+Row size: 10
+Number of Gates: 13
+Inputs: G1(M0),G3(M1),G2(M2),G4(M3),G5(M4)
+Outputs: G16(M7),G17(M6)
+Number of PIs: 5
+Number of POs: 2
+Total cycles: 17
+Reuse cycles: 4
+Reuse cycles percentage: 23.53%
+Execution sequence:
+T0: INIT M5,M6,M7,M8,M9
+T1: M9 = inv1 {M0}
+T2: M8 = inv1 {M1}
+T3: M7 = nor2 {M8,M9}
+T4: M6 = inv1 {M3}
+T5: M5 = nor2 {M6,M8}
+T6: INIT M9,M8,M6
+T7: M6 = inv1 {M2}
+T8: M8 = nor2 {M5,M6}
+T9: M9 = nor2 {M8,M7}
+T10: INIT M6,M7
+T11: M7 = inv1 {M9}
+T12: M6 = inv1 {M4}
+T13: INIT M9
+T14: M9 = nor2 {M5,M6}
+T15: INIT M6,M5
+T16: M5 = nor2 {M9,M8}
+T17: M6 = inv1 {M5}
+
+# 提取所有以 T 开头且包含 INIT 的行，排除 T0
+init_contents = re.findall(r'(?<!T0: )T\d+: INIT\s*([\w,]+)', content)
+
+# 输出所有提取到的信号
+for init_content in init_contents:
+    init_signals = init_content.split(',')
+    print("Extracted signals:", init_signals)
